@@ -1,5 +1,6 @@
 import express from "express";
 import { z } from "zod";
+import { summarize } from "./ai.js";
 import { createUser, getNote, listNotes } from "./db.js";
 
 const app = express();
@@ -19,6 +20,14 @@ app.get("/api/notes/:id", (req, res) => {
   const note = getNote(parsed.data.id);
   if (!note) return res.status(404).json({ error: "not found" });
   res.json(note);
+});
+
+app.post("/api/notes/:id/summary", async (req, res) => {
+  const parsed = NoteId.safeParse(req.params);
+  if (!parsed.success) return res.status(400).json({ error: "bad id" });
+  const note = getNote(parsed.data.id);
+  if (!note) return res.status(404).json({ error: "not found" });
+  res.json({ summary: await summarize(note) });
 });
 
 app.post("/api/signup", async (req, res) => {
