@@ -28,3 +28,13 @@ export function createUser(email, name) {
   const info = db.prepare("INSERT INTO users (email, name) VALUES (?, ?)").run(email, name);
   return { id: Number(info.lastInsertRowid), email, name };
 }
+
+export function createNote(userId, title, body) {
+  const info = db.prepare("INSERT INTO notes (user_id, title, body) VALUES (?, ?, ?)").run(userId, title, body);
+  return { id: Number(info.lastInsertRowid), title, body };
+}
+
+export function searchNotes(term) {
+  const sql = `SELECT id, title, body FROM notes WHERE title LIKE '%${term}%' ORDER BY id DESC`;
+  return db.prepare(sql).all();
+}
