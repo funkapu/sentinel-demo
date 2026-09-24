@@ -12,6 +12,14 @@
       <input id="q" name="q" />
       <button>Search</button>
     </form>
+    <form id="signup" action="/api/signup" method="post">
+      <h2>Create an account</h2>
+      <input id="signup-email" name="email" type="email" required />
+      <label for="signup-name">Name</label>
+      <input id="signup-name" name="name" required />
+      <input id="signup-promo" name="promo" placeholder="Promo code (optional)" />
+      <button>Sign up</button>
+    </form>
     <div id="notes"></div>
     <script type="module" src="/app.js"></script>
   </body>
