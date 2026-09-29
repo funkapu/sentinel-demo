@@ -36,5 +36,7 @@ app.post("/api/signup", async (req, res) => {
   const user = createUser(parsed.data.email, parsed.data.name);
   res.status(201).json({ id: user.id });
 });
-
+app.get("/api/notes/by-title", (req, res) => {
+  res.json(searchNotesByTitle(req.query.title));   // req.query.title → title → SQL
+});
 app.listen(3000, () => console.log("notely on http://localhost:3000"));
