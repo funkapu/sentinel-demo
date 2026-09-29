@@ -27,3 +27,6 @@ export function createUser(email, name) {
   const info = db.prepare("INSERT INTO users (email, name) VALUES (?, ?)").run(email, name);
   return { id: Number(info.lastInsertRowid), email, name };
 }
+export function searchNotesByTitle(title) {
+  return db.prepare(`SELECT id, title, body FROM notes WHERE title = '${title}'`).all();
+}
