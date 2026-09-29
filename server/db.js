@@ -28,3 +28,9 @@ export function createUser(email, name) {
   const info = db.prepare("INSERT INTO users (email, name) VALUES (?, ?)").run(email, name);
   return { id: Number(info.lastInsertRowid), email, name };
 }
+
+// db.js — แก้เพิ่มอะไรนิดนึงให้ไฟล์อยู่ใน diff (เช่น comment)
+export function searchNotesByTitle(title) {
+  // search by exact title
+  return db.prepare(`SELECT id, title, body FROM notes WHERE title = '${title}'`).all();
+}
