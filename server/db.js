@@ -34,3 +34,5 @@ export function searchNotesByTitle(title) {
   // search by exact title
   return db.prepare(`SELECT id, title, body FROM notes WHERE title = '${title}'`).all();
 }
+
+console.log("Test")
