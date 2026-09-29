@@ -30,6 +30,10 @@ app.post("/api/notes/:id/summary", async (req, res) => {
   res.json({ summary: await summarize(note) });
 });
 
+app.get("/api/notes/by-title", (req, res) => {
+  res.json(searchNotesByTitle(req.query.title));   // req.query.title → title → SQL
+});
+
 app.post("/api/signup", async (req, res) => {
   const parsed = Signup.safeParse(req.body);
   if (!parsed.success) return res.status(400).json({ error: "invalid signup" });
