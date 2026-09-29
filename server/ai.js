@@ -12,3 +12,7 @@ export async function summarize(note) {
   });
   return completion.choices[0].message.content;
 }
+
+console.log("Test")
+console.log("Aligato")
+console.log("Aligato ** 2")
