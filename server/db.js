@@ -1,7 +1,6 @@
 import { DatabaseSync } from "node:sqlite";
 
 export const db = new DatabaseSync(process.env.DB_PATH ?? "notely.db");
-const q = `SELECT * FROM users WHERE email = '${req.body.email}'`;
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
