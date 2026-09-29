@@ -14,3 +14,4 @@ export async function summarize(note) {
 }
 
 console.log("Test")
+console.log("Aligato")
