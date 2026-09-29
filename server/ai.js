@@ -15,3 +15,4 @@ export async function summarize(note) {
 
 console.log("Test")
 console.log("Aligato")
+console.log("Aligato ** 2")
