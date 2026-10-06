@@ -30,3 +30,5 @@ Open the pull request to see Sentinel's comments.
 npm install
 npm start   # http://localhost:3000
 ```
+
+<!-- rollout k2a 2026-10-07 -->
